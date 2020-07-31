@@ -6,14 +6,20 @@ export const globalStyles = (
     styles={css`
       @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
-      html,
       body {
-        padding: 1rem 1rem;
+        background-color: rgb(69, 4, 106);
+        padding: 1%;
         margin: 0;
-        background: papayawhip;
-        min-height: 100%;
+        border-bottom: black 5px solid;
         font-family: "Lato", sans-serif;
         font-size: 24px;
+      }
+
+      html {
+        background-color: rgb(181, 7, 107);
+        width: 99.3%;
+        height: 98.7%;
+        border: black 5px solid;
       }
 
       button {
