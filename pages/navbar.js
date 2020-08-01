@@ -16,17 +16,20 @@ function navBar() {
         text-decoration: none;
         align-items: center;
         justify-content: space-between;
-        background-color: #24252a;
+        background-color: rgb(69, 4, 106);
+        padding: 1%;
+        margin: -0.7%;
+        border-bottom: black 5px solid;
         block-size: auto;
       `}
     >
       <img
         className="logo"
-        src="./chavez_18.jpg"
+        src="./logo.PNG"
         css={css`
-          padding: 30px 30px;
-          width: 5%;
-          height: 5%;
+          padding: 2px 50px;
+          width: 7%;
+          height: 7%;
         `}
       ></img>
       <ul

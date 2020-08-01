@@ -7,10 +7,6 @@ export const globalStyles = (
       @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
       body {
-        background-color: rgb(69, 4, 106);
-        padding: 1%;
-        margin: 0;
-        border-bottom: black 5px solid;
         font-family: "Lato", sans-serif;
         font-size: 24px;
       }

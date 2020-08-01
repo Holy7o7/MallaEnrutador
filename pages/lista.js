@@ -73,7 +73,6 @@ const PaginadeLista = () => {
                   padding: 10px 10px;
                   font-size: 12px;
                   font-weight: bold;
-
                   color: white;
                   transition: box-shadow 0.5s;
                 `}
