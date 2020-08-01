@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import { db } from "../src/api/db";
 import { isEmail } from "../src/utils";
+import navBar from "./navbar";
 
 // const hoverBoxShadow = css`
 //   transition: box-shadow 0.5s;
