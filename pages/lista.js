@@ -21,19 +21,19 @@ const PaginadeLista = () => {
       <nav>{navBar()}</nav>
       <div
         css={css`
-          border: 1px solid green;
           float: left;
           display: flex;
-          width: 100%;
+          width: 101.5%;
+          padding-top: 0.5%;
           flex-direction: row;
         `}
       >
         <div
           css={css`
-            border: 1px solid black;
             display: flex;
             flex-direction: column;
             width: 50%;
+            margin-left: -0.7%;
             float: left;
           `}
         >
@@ -42,6 +42,8 @@ const PaginadeLista = () => {
               <button
                 css={css`
                   font-size: 16px;
+                  background-color: rgb(241, 231, 187);
+                  border: black 1px solid;
                 `}
                 key={semestre}
                 onClick={() => {
@@ -57,7 +59,6 @@ const PaginadeLista = () => {
           css={css`
             display: flex;
             float: right;
-            border: 1px solid black;
             flex-direction: column;
             width: 50%;
           `}
@@ -67,9 +68,10 @@ const PaginadeLista = () => {
               <button
                 css={css`
                   background-color: ${cursosClickeados[curso.id]
-                    ? "#fa9703"
-                    : "#9511ec"};
+                    ? "rgb(235,99,131)"
+                    : "#5c2a9d"};
                   border-radius: 0px;
+                  border: black 1px solid;
                   padding: 10px 10px;
                   font-size: 12px;
                   font-weight: bold;
