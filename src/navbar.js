@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "@emotion/react";
 import { useState } from "react";
+import Link from "next/link";
 
 const links = css``;
 
@@ -9,8 +10,7 @@ function navBar() {
     <header
       className="nav"
       css={css`
-        font-weight: 500;
-        font-size: 16px;
+        font-size: 15px;
         color: #ecf0f1;
         display: flex;
         text-decoration: none;
@@ -47,18 +47,19 @@ function navBar() {
             display: inline-block;
           `}
         >
-          <a
-            href="/index"
-            css={css`
-              color: #ffffff;
-              transition: all 0.3s ease 0s;
-              :hover {
-                color: #0088a9;
-              }
-            `}
-          >
-            Inicio
-          </a>
+          <Link href="/" passHref>
+            <a
+              css={css`
+                color: #ffffff;
+                transition: all 0.3s ease 0s;
+                :hover {
+                  color: #0088a9;
+                }
+              `}
+            >
+              Inicio
+            </a>
+          </Link>
         </li>
         <li
           css={css`

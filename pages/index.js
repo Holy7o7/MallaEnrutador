@@ -1,6 +1,7 @@
-import dataMalla from "../data.json";
 import { css } from "@emotion/react";
-import navBar from "./navbar";
+import navBar from "../src/navbar";
+import Link from "next/link";
+
 const Home = () => {
   return (
     <div
@@ -34,19 +35,20 @@ const Home = () => {
         />
       </div>
       <div>
-        <a
-          href="/lista"
-          css={css`
-            padding-left: 43%;
-            color: #ffffff;
-            transition: all 0.3s ease 0s;
-            :hover {
-              color: #400080;
-            }
-          `}
-        >
-          Lista de Semestres
-        </a>
+        <Link href="/lista" passHref>
+          <a
+            css={css`
+              padding-left: 43%;
+              color: #ffffff;
+              transition: all 0.3s ease 0s;
+              :hover {
+                color: #400080;
+              }
+            `}
+          >
+            Lista de Semestres
+          </a>
+        </Link>
       </div>
     </div>
   );

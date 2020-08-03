@@ -2,9 +2,23 @@
 import dataMalla from "../data.json";
 import { css } from "@emotion/react";
 import { useState } from "react";
-import navBar from "./navbar";
+import navBar from "../src/navbar";
 
 const semestres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const colorSemestres = [
+  "rgb(89,49,148)",
+  "rgb(68,53,144)",
+  "rgb(49,49,149)",
+  "rgb(47,55,153)",
+  "rgb(37,60,153)",
+  "rgb(23,73,157)",
+  "rgb(21,85,172)",
+  "rgb(12,90,172)",
+  "rgb(7,103,179)",
+  "rgb(0,111,190)",
+  "rgb(1,121,197)",
+  "rgb(0,135,205)",
+];
 
 const PaginadeLista = () => {
   const [cursosClickeados, setCursosClickeados] = useState({});
@@ -15,15 +29,13 @@ const PaginadeLista = () => {
       css={css`
         width: 100%;
         display: block;
-        border: 1px solid red;
       `}
     >
       <nav>{navBar()}</nav>
       <div
         css={css`
-          float: left;
           display: flex;
-          width: 101.5%;
+          width: 100.7%;
           padding-top: 0.5%;
           flex-direction: row;
         `}
@@ -33,7 +45,7 @@ const PaginadeLista = () => {
             display: flex;
             flex-direction: column;
             width: 50%;
-            margin-left: -0.7%;
+            margin-left: -0.8%;
             float: left;
           `}
         >
@@ -41,9 +53,11 @@ const PaginadeLista = () => {
             return (
               <button
                 css={css`
-                  font-size: 16px;
-                  background-color: rgb(241, 231, 187);
-                  border: black 1px solid;
+                  font-size: 20px;
+                  color: white;
+                  background-color: ${colorSemestres[semestre]};
+                  border: ${semestreActive === semestre ? "white" : "black"} 1px
+                    solid;
                 `}
                 key={semestre}
                 onClick={() => {
@@ -60,20 +74,22 @@ const PaginadeLista = () => {
             display: flex;
             float: right;
             flex-direction: column;
-            width: 50%;
+            width: 55%;
           `}
         >
           {dataMalla.malla.map((curso) => {
             return semestreActive === curso.semester ? (
               <button
                 css={css`
-                  background-color: ${cursosClickeados[curso.id]
-                    ? "rgb(235,99,131)"
-                    : "#5c2a9d"};
+                  background-color: ${colorSemestres[semestreActive]};
                   border-radius: 0px;
                   border: black 1px solid;
+                  border-left: ${cursosClickeados[curso.id]
+                      ? "black"
+                      : "transparent"}
+                    10px solid;
                   padding: 10px 10px;
-                  font-size: 12px;
+                  font-size: 16px;
                   font-weight: bold;
                   color: white;
                   transition: box-shadow 0.5s;
@@ -97,6 +113,26 @@ const PaginadeLista = () => {
             ) : null;
           })}
         </div>
+      </div>
+      <div>
+        <button
+          css={css`
+            border: 2px solid black;
+            background-color: #8000ff;
+            color: white;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease 0s;
+            :hover {
+              background-color: #800080;
+              border: 2px solid white;
+            }
+          `}
+        >
+          Generar
+        </button>
       </div>
     </div>
   );
