@@ -25,5 +25,9 @@ export const algoritmo = (cursosAprobados, cursosPendientes) => {
     }
   });
 
-  return potenciales;
+  const potencialesF = potenciales.filter((element) => {
+    return !(element === "");
+  });
+
+  return potencialesF;
 };
