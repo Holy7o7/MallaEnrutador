@@ -35,8 +35,8 @@ const PaginadeLista = () => {
       <div
         css={css`
           display: flex;
-          width: 100.7%;
-          padding-top: 0.5%;
+          width: 100%;
+          padding-bottom: 1%;
           flex-direction: row;
         `}
       >
@@ -44,9 +44,11 @@ const PaginadeLista = () => {
           css={css`
             display: flex;
             flex-direction: column;
-            width: 50%;
+            width: 20%;
             margin-left: -0.8%;
             float: left;
+            padding-left: 20%;
+            padding-top: 5%;
           `}
         >
           {semestres.map((semestre) => {
@@ -55,6 +57,8 @@ const PaginadeLista = () => {
                 css={css`
                   font-size: 20px;
                   color: white;
+                  text-align: left;
+                  padding: 3px 2px;
                   background-color: ${colorSemestres[semestre]};
                   border: ${semestreActive === semestre ? "white" : "black"} 1px
                     solid;
@@ -64,17 +68,20 @@ const PaginadeLista = () => {
                   setSemestreActive(semestre);
                 }}
               >
-                Semestre {semestre}
+                <input type="checkbox"></input>
+                SEMESTRE {semestre}
               </button>
             );
           })}
         </div>
         <div
           css={css`
-            display: flex;
+            display: inline-flex;
             float: right;
             flex-direction: column;
-            width: 55%;
+            width: 40%;
+            padding-top: 5%;
+            padding-left: 2%;
           `}
         >
           {dataMalla.malla.map((curso) => {
@@ -83,15 +90,13 @@ const PaginadeLista = () => {
                 css={css`
                   background-color: ${colorSemestres[semestreActive]};
                   border-radius: 0px;
-                  border: black 1px solid;
-                  border-left: ${cursosClickeados[curso.id]
-                      ? "black"
-                      : "transparent"}
-                    10px solid;
+                  border: ${cursosClickeados[curso.id] ? "white" : "black"} 1px
+                    solid;
                   padding: 10px 10px;
                   font-size: 16px;
                   font-weight: bold;
                   color: white;
+                  text-align: left;
                   transition: box-shadow 0.5s;
                 `}
                 key={curso.id}
@@ -108,13 +113,20 @@ const PaginadeLista = () => {
                   });
                 }}
               >
+                <input type="checkbox"></input>
+
                 {curso.name}
               </button>
             ) : null;
           })}
         </div>
       </div>
-      <div>
+      <div
+        css={css`
+          float: left;
+          padding-left: 25%;
+        `}
+      >
         <button
           css={css`
             border: 2px solid black;
@@ -125,6 +137,8 @@ const PaginadeLista = () => {
             cursor: pointer;
             border-radius: 30px;
             transition: all 0.3s ease 0s;
+            display: inline-block;
+            text-align: center;
             :hover {
               background-color: #800080;
               border: 2px solid white;

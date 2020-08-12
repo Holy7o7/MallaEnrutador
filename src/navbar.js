@@ -36,14 +36,15 @@ function navBar() {
         className="links"
         css={css`
           list-style: none;
-          display: flex;
+          display: inline-block;
           justify-content: space-between;
           align-items: center;
+          padding-right: 36%;
         `}
       >
         <li
           css={css`
-            padding: 0px 30px;
+            padding: 0px 50px;
             display: inline-block;
           `}
         >
@@ -57,7 +58,7 @@ function navBar() {
                 }
               `}
             >
-              Inicio
+              INICIO
             </a>
           </Link>
         </li>
@@ -67,7 +68,7 @@ function navBar() {
             display: inline-block;
           `}
         >
-          <a>FAQ</a>
+          <a>QUIENES SOMOS</a>
         </li>
         <li
           css={css`
@@ -75,7 +76,7 @@ function navBar() {
             display: inline-block;
           `}
         >
-          <a>About us</a>
+          <a>FAQ</a>
         </li>
       </ul>
     </header>
