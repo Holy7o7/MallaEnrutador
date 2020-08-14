@@ -3,6 +3,7 @@ import dataMalla from "../data.json";
 import { css } from "@emotion/react";
 import { useState } from "react";
 import navBar from "../src/navbar";
+import Axios from "axios";
 
 const semestres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const colorSemestres = [
@@ -68,7 +69,39 @@ const PaginadeLista = () => {
                   setSemestreActive(semestre);
                 }}
               >
-                <input type="checkbox"></input>
+                <input
+                  type="checkbox"
+                  key={semestre}
+                  onChange={(event) => {
+                    let checked = event.target.checked;
+                    setSemestreActive(semestre);
+                    if (checked) {
+                      dataMalla.malla.map((curso) => {
+                        if (curso.semester === semestre) {
+                          setCursosClickeados((cursosClickeados) => {
+                            return {
+                              ...cursosClickeados,
+                              [curso.id]: true,
+                              /** indefinido o true o false */
+                            };
+                          });
+                        }
+                      });
+                    } else {
+                      dataMalla.malla.map((curso) => {
+                        if (curso.semester === semestre) {
+                          setCursosClickeados((cursosClickeados) => {
+                            return {
+                              ...cursosClickeados,
+                              [curso.id]: false,
+                              /** indefinido o true o false */
+                            };
+                          });
+                        }
+                      });
+                    }
+                  }}
+                ></input>
                 SEMESTRE {semestre}
               </button>
             );
@@ -113,7 +146,11 @@ const PaginadeLista = () => {
                   });
                 }}
               >
-                <input type="checkbox"></input>
+                <input
+                  type="checkbox"
+                  disabled="disabled"
+                  checked={cursosClickeados[curso.id] ? true : false}
+                ></input>
 
                 {curso.name}
               </button>
@@ -144,6 +181,11 @@ const PaginadeLista = () => {
               border: 2px solid white;
             }
           `}
+          onClick={async () => {
+            console.log(cursosClickeados);
+            const response = await Axios.post(`/api/generar`, cursosClickeados);
+            console.log(response.data);
+          }}
         >
           Generar
         </button>
