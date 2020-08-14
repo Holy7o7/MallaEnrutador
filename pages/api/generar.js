@@ -2,7 +2,7 @@ import { NextApiResponse, NextApiRequest } from "next";
 import { db } from "../../src/api/db";
 import _ from "lodash";
 import data from "../../data.json";
-import { algoritmo } from "../../src/api/algoritmo1";
+import { potentialCourses } from "../../src/api/academicPlanning";
 /**
  * @export
  * @param {NextApiRequest} req
@@ -23,5 +23,5 @@ export default async function (req, res) {
     return !cursosAprobados.includes(curso.id);
   });
 
-  res.send(algoritmo(cursosAprobados, cursosPendientes));
+  res.send(potentialCourses(cursosAprobados, cursosPendientes));
 }

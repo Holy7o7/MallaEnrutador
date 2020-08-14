@@ -148,7 +148,7 @@ const PaginadeLista = () => {
               >
                 <input
                   type="checkbox"
-                  disabled="disabled"
+                  readOnly
                   checked={cursosClickeados[curso.id] ? true : false}
                 ></input>
 
