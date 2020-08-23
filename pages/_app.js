@@ -1,5 +1,6 @@
 import { CacheProvider, Global, css } from "@emotion/react";
 import { cache } from "@emotion/css";
+require("../src/styles.css");
 
 export const globalStyles = (
   <Global
