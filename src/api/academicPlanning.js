@@ -1,12 +1,11 @@
 import data from "../../data.json";
-
+import filtrados from "../api/filter";
 var hash = {};
 data.malla.map((element) => {
   hash[element.id] = element;
 });
 
 export const potentialCourses = (cursosAprobados, cursosPendientes) => {
-  const creditsProm = 31;
   const plan = [];
   const aprobadosN = cursosAprobados.map((n) => {
     return hash[n].course_id;
@@ -15,17 +14,17 @@ export const potentialCourses = (cursosAprobados, cursosPendientes) => {
     if (
       curso.requisites.split(",").every((elemento) => {
         return aprobadosN.includes(elemento);
-      })
+      }) ||
+      curso.requisites == ""
     ) {
       return curso.id;
     } else {
       return "";
     }
   });
-
-  const potencialesF = potenciales.filter((element) => {
+  let potencialesF = potenciales.filter((element) => {
     return element;
   });
-
-  return potencialesF;
+  const output = filtrados(potencialesF, 32);
+  return output;
 };

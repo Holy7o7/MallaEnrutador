@@ -24,6 +24,8 @@ const colorSemestres = [
 const PaginadeLista = () => {
   const [cursosClickeados, setCursosClickeados] = useState({});
   const [semestreActive, setSemestreActive] = useState(null);
+  const [alternateDisplay, setAlternateDisplay] = useState(true);
+  const [semestrePar, setSemestrePar] = useState(true);
 
   return (
     <div
@@ -33,9 +35,10 @@ const PaginadeLista = () => {
       `}
     >
       <nav>{navBar()}</nav>
+
       <div
         css={css`
-          display: flex;
+          display: ${alternateDisplay ? "flex" : "none"};
           width: 100%;
           padding-bottom: 1%;
           flex-direction: row;
@@ -174,7 +177,7 @@ const PaginadeLista = () => {
             cursor: pointer;
             border-radius: 30px;
             transition: all 0.3s ease 0s;
-            display: inline-block;
+            display: ${alternateDisplay ? "inline-block" : "none"};
             text-align: center;
             :hover {
               background-color: #800080;
@@ -182,13 +185,20 @@ const PaginadeLista = () => {
             }
           `}
           onClick={async () => {
-            console.log(cursosClickeados);
             const response = await Axios.post(`/api/generar`, cursosClickeados);
             console.log(response.data);
+            setAlternateDisplay(!alternateDisplay);
           }}
         >
           Generar
         </button>
+        <div
+          css={css`
+            display: ${alternateDisplay ? "none" : "block"};
+          `}
+        >
+          Test
+        </div>
       </div>
     </div>
   );
