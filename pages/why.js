@@ -8,9 +8,19 @@ const why = () => {
       css={css`
         width: 100%;
         display: block;
+        h1 {
+          color: white;
+          text-align: center;
+          text-shadow: black 6px 6px 8px;
+          text-transform: uppercase;
+          font-size: 2vw;
+          text-align: center;
+          margin: 4;
+        }
       `}
     >
       <nav>{navBar()}</nav>
+<<<<<<< Updated upstream
       <div
         css={css`
           background: white;
@@ -18,6 +28,11 @@ const why = () => {
           margin: 2%;
         `}
       >
+=======
+      <h1> Quienes Somos </h1>
+
+      <div>
+>>>>>>> Stashed changes
         <Tabs>
           <div label="UNIVERSIDAD">
             <p>Acá hay que colocar algo sobre la Univesidad.</p>

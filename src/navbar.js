@@ -84,11 +84,23 @@ function navBar() {
         </li>
         <li
           css={css`
-            padding: 0px 30px;
+            padding: 0px 50px;
             display: inline-block;
           `}
         >
-          <a>FAQ</a>
+          <Link href="/faq" passHref>
+            <a
+              css={css`
+                color: #ffffff;
+                transition: all 0.3s ease 0s;
+                :hover {
+                  color: #0088a9;
+                }
+              `}
+            >
+              FAQ
+            </a>
+          </Link>
         </li>
       </ul>
     </header>
