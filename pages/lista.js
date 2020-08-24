@@ -35,6 +35,7 @@ const colorSemestres = [
   "rgb(1,121,197)",
   "rgb(0,135,205)",
 ];
+
 const PaginadeLista = () => {
   const [cursosClickeados, setCursosClickeados] = useState({});
   const [semestreActive, setSemestreActive] = useState(null);
@@ -49,7 +50,6 @@ const PaginadeLista = () => {
       `}
     >
       <nav>{navBar()}</nav>
-
       <div
         css={css`
           display: ${alternateDisplay ? "flex" : "none"};
