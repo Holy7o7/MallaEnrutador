@@ -10,6 +10,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import Switch from "@material-ui/core/Switch";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,6 +42,13 @@ const PaginadeLista = () => {
   const [alternateDisplay, setAlternateDisplay] = useState(true);
   const [semestrePar, setSemestrePar] = useState(true);
   const classes = useStyles();
+
+  const [state, setState] = React.useState(true);
+
+  const handleChange = (event) => {
+    setState(!state);
+  };
+
   return (
     <div
       css={css`
@@ -49,7 +57,16 @@ const PaginadeLista = () => {
       `}
     >
       <nav>{navBar()}</nav>
-
+      <div>
+        <Switch
+          checked={state}
+          onChange={handleChange}
+          color="primary"
+          name="checkedB"
+          size="big"
+          inputProps={{ "aria-label": "primary checkbox" }}
+        />
+      </div>
       <div
         css={css`
           display: ${alternateDisplay ? "flex" : "none"};

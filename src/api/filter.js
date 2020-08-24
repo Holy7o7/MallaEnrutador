@@ -52,7 +52,11 @@ export let filtrados = (arrayCursos, credits) => {
     }
     return output;
   } else {
-    return arrayCursos;
+    let output2 = [];
+    arrayCursos.forEach((element) => {
+      output2.push(hash[element].name);
+    });
+    return output2;
   }
 };
 
