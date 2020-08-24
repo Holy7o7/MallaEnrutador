@@ -4,6 +4,20 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import navBar from "../src/navbar";
 import Axios from "axios";
+import { palette } from "@material-ui/system";
+import { makeStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
 
 var plan = [];
 const semestres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -27,7 +41,7 @@ const PaginadeLista = () => {
   const [semestreActive, setSemestreActive] = useState(null);
   const [alternateDisplay, setAlternateDisplay] = useState(true);
   const [semestrePar, setSemestrePar] = useState(true);
-
+  const classes = useStyles();
   return (
     <div
       css={css`
@@ -200,19 +214,21 @@ const PaginadeLista = () => {
             padding-top: 5%;
           `}
         >
-          {plan.map((element) => {
-            return (
-              <div
-                css={css`
-                  display: ${alternateDisplay ? "none" : "block"};
-                  padding: 5px;
-                  background: #fff;
-                `}
-              >
-                {element}
-              </div>
-            );
-          })}
+          <div>
+            <List
+              component="nav"
+              className={classes.root}
+              aria-label="contacts"
+            >
+              {plan.map((element) => {
+                return (
+                  <ListItem>
+                    <ListItemText inset primary={element} />
+                  </ListItem>
+                );
+              })}
+            </List>
+          </div>
         </div>
       </div>
     </div>
