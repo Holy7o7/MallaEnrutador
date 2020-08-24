@@ -78,7 +78,7 @@ function navBar() {
                 }
               `}
             >
-              Quienes Somos
+              QUIENES SOMOS
             </a>
           </Link>
         </li>

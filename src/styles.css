@@ -1,17 +1,21 @@
 .tab-list {
-  border-bottom: 1px solid black;
   padding-left: 0;
   text-align: center;
   width: 100%;
   justify-items: space-between;
+  background: rgb(181, 7, 107);
+  margin-top: -0%;
+  border-bottom: solid black;
 }
 
 .tab-list-item {
   background: rgb(238, 207, 207);
   border: solid black;
+  border-width: 1px 1px 0 1px;
   display: inline-table;
   list-style: none;
   margin-bottom: -1px;
+  margin-left: 20px;
   padding: 0.5rem 0.75rem;
   cursor: pointer;
 }
