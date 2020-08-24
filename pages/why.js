@@ -20,7 +20,6 @@ const why = () => {
       `}
     >
       <nav>{navBar()}</nav>
-<<<<<<< Updated upstream
       <div
         css={css`
           background: white;
@@ -28,11 +27,6 @@ const why = () => {
           margin: 2%;
         `}
       >
-=======
-      <h1> Quienes Somos </h1>
-
-      <div>
->>>>>>> Stashed changes
         <Tabs>
           <div label="UNIVERSIDAD">
             <p>Acá hay que colocar algo sobre la Univesidad.</p>

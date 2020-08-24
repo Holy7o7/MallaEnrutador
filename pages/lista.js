@@ -4,7 +4,6 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import navBar from "../src/navbar";
 import Axios from "axios";
-<<<<<<< Updated upstream
 import { palette } from "@material-ui/system";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -19,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
 }));
-=======
-import { LoremIpsum } from "lorem-ipsum";
->>>>>>> Stashed changes
 
 var plan = [];
 const semestres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
