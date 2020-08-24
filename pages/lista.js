@@ -5,6 +5,7 @@ import { useState } from "react";
 import navBar from "../src/navbar";
 import Axios from "axios";
 
+var plan = [];
 const semestres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const colorSemestres = [
   "rgb(89,49,148)",
@@ -186,7 +187,8 @@ const PaginadeLista = () => {
           `}
           onClick={async () => {
             const response = await Axios.post(`/api/generar`, cursosClickeados);
-            console.log(response.data);
+
+            plan = response.data;
             setAlternateDisplay(!alternateDisplay);
           }}
         >
@@ -195,9 +197,22 @@ const PaginadeLista = () => {
         <div
           css={css`
             display: ${alternateDisplay ? "none" : "block"};
+            padding-top: 5%;
           `}
         >
-          Test
+          {plan.map((element) => {
+            return (
+              <div
+                css={css`
+                  display: ${alternateDisplay ? "none" : "block"};
+                  padding: 5px;
+                  background: #fff;
+                `}
+              >
+                {element}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

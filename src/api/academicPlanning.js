@@ -6,7 +6,6 @@ data.malla.map((element) => {
 });
 
 export const potentialCourses = (cursosAprobados, cursosPendientes) => {
-  const plan = [];
   const aprobadosN = cursosAprobados.map((n) => {
     return hash[n].course_id;
   });
