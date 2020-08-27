@@ -10,8 +10,8 @@ const faq = () => {
       <div
         css={css`
           justify-content: center;
-          width: 50%;
-          padding-left: 25%;
+          width: 80%;
+          padding-left: 10%;
           display: block;
           h1 {
             color: white;
