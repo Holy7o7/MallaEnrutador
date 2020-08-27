@@ -10,7 +10,8 @@ import { potentialCourses } from "../../src/api/academicPlanning";
  */
 
 export default async function (req, res) {
-  const cursosClickeados = req.body;
+  const cursosClickeados = req.body[0];
+  let semestrePar = req.body[1];
   let cursosAprobados = _.filter(
     Object.entries(cursosClickeados),
     ([curso, bool]) => {
@@ -26,7 +27,11 @@ export default async function (req, res) {
   let i = 0;
   while (cursosPendientes.length > 0 && i <= 10) {
     console.log("pop");
-    output[i] = potentialCourses(cursosAprobados, cursosPendientes);
+    output[i] = potentialCourses(
+      cursosAprobados,
+      cursosPendientes,
+      semestrePar
+    );
     cursosPendientes.map((curso) => {
       if (output[i].includes(curso.name)) {
         cursosAprobados.push(curso.id);
@@ -35,6 +40,7 @@ export default async function (req, res) {
     cursosPendientes = cursosPendientes.filter((curso) => {
       return !output[i].includes(curso.name);
     });
+    semestrePar = !semestrePar;
     i = i + 1;
   }
   console.log(output);

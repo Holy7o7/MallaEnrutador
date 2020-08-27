@@ -47,7 +47,7 @@ const PaginadeLista = () => {
   const [state, setState] = React.useState(true);
 
   const handleChange = (event) => {
-    setState(!state);
+    setSemestrePar(!semestrePar);
   };
 
   return (
@@ -60,7 +60,7 @@ const PaginadeLista = () => {
       <nav>{navBar()}</nav>
       <div>
         <Switch
-          checked={state}
+          checked={semestrePar}
           onChange={handleChange}
           color="primary"
           name="checkedB"
@@ -217,7 +217,10 @@ const PaginadeLista = () => {
             }
           `}
           onClick={async () => {
-            const response = await Axios.post(`/api/generar`, cursosClickeados);
+            const response = await Axios.post(`/api/generar`, [
+              cursosClickeados,
+              semestrePar,
+            ]);
 
             plan = response.data;
             setAlternateDisplay(!alternateDisplay);

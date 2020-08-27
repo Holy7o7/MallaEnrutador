@@ -5,15 +5,17 @@ data.malla.map((element) => {
   hash[element.id] = element;
 });
 
-export const potentialCourses = (cursosAprobados, cursosPendientes) => {
+export const potentialCourses = (cursosAprobados, cursosPendientes, sPar) => {
+  var par = sPar ? 1 : 2;
   const aprobadosN = cursosAprobados.map((n) => {
     return hash[n].course_id;
   });
   const potenciales = cursosPendientes.map((curso) => {
     if (
-      curso.requisites.split(",").every((elemento) => {
+      (curso.requisites.split(",").every((elemento) => {
         return aprobadosN.includes(elemento);
-      }) ||
+      }) &&
+        curso.term == par) ||
       curso.requisites == ""
     ) {
       return curso.id;
