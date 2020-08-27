@@ -44,7 +44,9 @@
 
 .accordion-title:hover,
 .active {
-  background-color: #ccc;
+  background-color: #491398;
+  border: 1px solid black;
+  color: white;
 }
 
 .accordion-icon {
@@ -57,15 +59,19 @@
 }
 
 .accordion-content {
-  background-color: white;
+  background-color: #900a4b;
+  color: white;
   overflow: hidden;
+  padding-right: 1%;
+  padding-left: 1%;
+  border: 1px solid black;
   transition: max-height 0.6s ease;
 }
 
 .accordion-text {
   font-weight: 400;
-  font-size: 14px;
-  padding: 18px;
+  font-size: 18px;
+  padding: 14px;
 }
 .MuiListItem-root {
   background: purple;
