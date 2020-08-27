@@ -231,20 +231,29 @@ const PaginadeLista = () => {
             padding-top: 5%;
           `}
         >
-          <div>
-            <List
-              component="nav"
-              className={classes.root}
-              aria-label="contacts"
-            >
-              {plan.map((element) => {
-                return (
-                  <ListItem>
-                    <ListItemText inset primary={element} />
-                  </ListItem>
-                );
-              })}
-            </List>
+          <div
+            css={css`
+              display: flex;
+              flex-direction: row;
+            `}
+          >
+            {plan.map((element) => {
+              return (
+                <List
+                  component="nav"
+                  className={classes.root}
+                  aria-label="contacts"
+                >
+                  {element.map((element) => {
+                    return (
+                      <ListItem>
+                        <ListItemText inset primary={element} />
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              );
+            })}
           </div>
         </div>
       </div>

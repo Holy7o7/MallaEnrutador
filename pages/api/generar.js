@@ -11,7 +11,7 @@ import { potentialCourses } from "../../src/api/academicPlanning";
 
 export default async function (req, res) {
   const cursosClickeados = req.body;
-  const cursosAprobados = _.filter(
+  let cursosAprobados = _.filter(
     Object.entries(cursosClickeados),
     ([curso, bool]) => {
       return bool;
@@ -19,9 +19,25 @@ export default async function (req, res) {
   ).map(([curso, bool]) => {
     return parseInt(curso);
   });
-  const cursosPendientes = data.malla.filter((curso) => {
+  let cursosPendientes = data.malla.filter((curso) => {
     return !cursosAprobados.includes(curso.id);
   });
+  let output = [];
+  let i = 0;
+  while (cursosPendientes.length > 0 && i <= 10) {
+    console.log("pop");
+    output[i] = potentialCourses(cursosAprobados, cursosPendientes);
+    cursosPendientes.map((curso) => {
+      if (output[i].includes(curso.name)) {
+        cursosAprobados.push(curso.id);
+      }
+    });
+    cursosPendientes = cursosPendientes.filter((curso) => {
+      return !output[i].includes(curso.name);
+    });
+    i = i + 1;
+  }
+  console.log(output);
 
-  res.send(potentialCourses(cursosAprobados, cursosPendientes));
+  res.send(output);
 }

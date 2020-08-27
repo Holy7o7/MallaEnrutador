@@ -18,12 +18,17 @@ export const potentialCourses = (cursosAprobados, cursosPendientes) => {
     ) {
       return curso.id;
     } else {
+      console.log(curso.name);
       return "";
     }
   });
+  console.log(aprobadosN.length);
   let potencialesF = potenciales.filter((element) => {
     return element;
   });
+  if (potencialesF.length < 1) {
+    return [];
+  }
   const output = filtrados(potencialesF, 32);
   return output;
 };
