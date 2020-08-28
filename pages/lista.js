@@ -250,6 +250,12 @@ const PaginadeLista = () => {
                   className={classes.root}
                   aria-label="contacts"
                 >
+                  <ListItem>
+                    <ListItemText
+                      inset
+                      primary={"Semestre " + (plan.indexOf(element) + 1)}
+                    />
+                  </ListItem>
                   {element.map((element) => {
                     return (
                       <ListItem>

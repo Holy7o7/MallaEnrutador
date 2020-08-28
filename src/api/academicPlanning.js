@@ -20,11 +20,9 @@ export const potentialCourses = (cursosAprobados, cursosPendientes, sPar) => {
     ) {
       return curso.id;
     } else {
-      console.log(curso.name);
       return "";
     }
   });
-  console.log(aprobadosN.length);
   let potencialesF = potenciales.filter((element) => {
     return element;
   });
