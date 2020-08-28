@@ -6,6 +6,7 @@ import navBar from "../src/navbar";
 import Axios from "axios";
 import { palette } from "@material-ui/system";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -14,9 +15,9 @@ import Switch from "@material-ui/core/Switch";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    borderRadius: 3,
+    margin: 3,
+    alignContent: "center",
   },
 }));
 
@@ -60,9 +61,34 @@ const PaginadeLista = () => {
       <nav>{navBar()}</nav>
       <div
         css={css`
-          display: ${alternateDisplay ? "flex" : "none"};
+          h1 {
+            color: white;
+            text-align: center;
+            text-shadow: black 6px 6px 8px;
+            text-transform: uppercase;
+            font-size: 2vw;
+            text-align: center;
+            margin: 4;
+          }
         `}
       >
+        {" "}
+        <h1> GENERADOR MALLA </h1>
+      </div>
+      <div
+        css={css`
+          color: white;
+          text-align: center;
+          border: 1px solid black;
+          display: ${alternateDisplay ? "block" : "none"};
+        `}
+      >
+        <p>
+          {" "}
+          Seleccione el siguiente semestre que cursará, siendo "PERIODO 1" los
+          semestres impares y "PERIODO 2" los semestres pares.
+        </p>
+        PERIODO 1
         <Switch
           checked={semestrePar}
           onChange={handleChange}
@@ -71,6 +97,7 @@ const PaginadeLista = () => {
           size="big"
           inputProps={{ "aria-label": "primary checkbox" }}
         />
+        PERIODO 2
       </div>
       <div
         css={css`
@@ -78,6 +105,7 @@ const PaginadeLista = () => {
           width: 100%;
           padding-bottom: 1%;
           flex-direction: row;
+          border: 1px solid black;
         `}
       >
         <div
@@ -88,7 +116,7 @@ const PaginadeLista = () => {
             margin-left: -0.8%;
             float: left;
             padding-left: 20%;
-            padding-top: 5%;
+            padding-top: 1%;
           `}
         >
           {semestres.map((semestre) => {
@@ -152,7 +180,7 @@ const PaginadeLista = () => {
             float: right;
             flex-direction: column;
             width: 40%;
-            padding-top: 5%;
+            padding-top: 1%;
             padding-left: 2%;
           `}
         >
@@ -197,57 +225,56 @@ const PaginadeLista = () => {
           })}
         </div>
       </div>
-      <div
-        css={css`
-          float: left;
-          padding-left: 25%;
-        `}
-      >
-        <button
+      <div>
+        <div
           css={css`
-            border: 2px solid black;
-            background-color: #8000ff;
-            color: white;
-            padding: 14px 28px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 30px;
-            transition: all 0.3s ease 0s;
-            display: ${alternateDisplay ? "inline-block" : "none"};
-            text-align: center;
-            :hover {
-              background-color: #800080;
-              border: 2px solid white;
-            }
+            float: left;
+            padding-left: 25%;
           `}
-          onClick={async () => {
-            const response = await Axios.post(`/api/generar`, [
-              cursosClickeados,
-              semestrePar,
-            ]);
-
-            plan = response.data;
-            setAlternateDisplay(!alternateDisplay);
-          }}
         >
-          Generar
-        </button>
+          <button
+            css={css`
+              border: 2px solid black;
+              background-color: #8000ff;
+              color: white;
+              padding: 14px 28px;
+              font-size: 16px;
+              cursor: pointer;
+              border-radius: 30px;
+              transition: all 0.3s ease 0s;
+              display: ${alternateDisplay ? "inline-block" : "none"};
+              text-align: center;
+              :hover {
+                background-color: #800080;
+              }
+            `}
+            onClick={async () => {
+              const response = await Axios.post(`/api/generar`, [
+                cursosClickeados,
+                !semestrePar,
+              ]);
+
+              plan = response.data;
+              setAlternateDisplay(!alternateDisplay);
+            }}
+          >
+            Generar
+          </button>
+        </div>
         <div
           css={css`
             display: ${alternateDisplay ? "none" : "block"};
-            background: none;
-            margin-left: -15%;
-            margin-top: -1%;
+            padding-left: 1%;
           `}
         >
           <div
             css={css`
               overflow: scroll;
-              background: none;
-              height: 600px;
-              width: 1000px;
+              height: 650px;
+              width: 99%;
               display: flex;
-              flex-direction: row;
+              border-left: 5px solid black;
+              border-top: 5px solid black;
             `}
           >
             {plan.map((element) => {
@@ -259,14 +286,28 @@ const PaginadeLista = () => {
                 >
                   <ListItem>
                     <ListItemText
-                      inset
-                      primary={"Semestre " + (plan.indexOf(element) + 1)}
+                      primary={
+                        <Typography variant="h5" align="center">
+                          SEMESTRE {plan.indexOf(element) + 1}
+                        </Typography>
+                      }
                     />
                   </ListItem>
-                  {element.map((element) => {
+                  {element.map((elemento) => {
                     return (
                       <ListItem>
-                        <ListItemText inset primary={element} />
+                        <ListItemText
+                          css={css`
+                            background-color: ${colorSemestres[
+                              plan.indexOf(element)
+                            ]};
+                          `}
+                          primary={
+                            <Typography variant="caption" align="center">
+                              {elemento}
+                            </Typography>
+                          }
+                        />
                       </ListItem>
                     );
                   })}

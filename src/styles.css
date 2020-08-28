@@ -73,11 +73,14 @@
   font-size: 18px;
   padding: 14px;
 }
-.MuiListItem-root {
-  background: purple;
+
+.MuiListItemText-root {
   color: white;
   border: solid black;
-  margin-top: -3%;
-  margin-bottom: -3%;
-  height: 150px;
+  width: 250px;
+}
+
+.MuiListItem-root {
+  color: white;
+  width: 100%;
 }
