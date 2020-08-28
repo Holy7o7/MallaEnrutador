@@ -15,7 +15,7 @@ export const potentialCourses = (cursosAprobados, cursosPendientes, sPar) => {
       (curso.requisites.split(",").every((elemento) => {
         return aprobadosN.includes(elemento);
       }) &&
-        curso.term == par) ||
+        (curso.term == par || curso.term == 0)) ||
       curso.requisites == ""
     ) {
       return curso.id;
