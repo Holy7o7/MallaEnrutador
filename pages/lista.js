@@ -238,6 +238,9 @@ const PaginadeLista = () => {
             css={css`
               display: flex;
               flex-direction: row;
+              margin-left: -33%;
+              margin-top: -7%;
+              border: solid black;
             `}
           >
             {plan.map((element) => {
