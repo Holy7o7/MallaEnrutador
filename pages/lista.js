@@ -231,16 +231,17 @@ const PaginadeLista = () => {
         <div
           css={css`
             display: ${alternateDisplay ? "none" : "block"};
-            padding-top: 5%;
+            margin-left: -15%;
+            margin-top: -1%;
           `}
         >
           <div
             css={css`
+              overflow: scroll;
+              height: 600px;
+              width: 1000px;
               display: flex;
               flex-direction: row;
-              margin-left: -33%;
-              margin-top: -7%;
-              border: solid black;
             `}
           >
             {plan.map((element) => {
