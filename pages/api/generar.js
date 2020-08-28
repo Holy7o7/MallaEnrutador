@@ -25,7 +25,7 @@ export default async function (req, res) {
   });
   let output = [];
   let i = 0;
-  while (cursosPendientes.length > 0 && i <= 20) {
+  while (cursosPendientes.length > 0) {
     console.log("pop");
     output[i] = potentialCourses(
       cursosAprobados,

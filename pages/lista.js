@@ -58,7 +58,11 @@ const PaginadeLista = () => {
       `}
     >
       <nav>{navBar()}</nav>
-      <div>
+      <div
+        css={css`
+          display: ${alternateDisplay ? "flex" : "none"};
+        `}
+      >
         <Switch
           checked={semestrePar}
           onChange={handleChange}
@@ -231,6 +235,7 @@ const PaginadeLista = () => {
         <div
           css={css`
             display: ${alternateDisplay ? "none" : "block"};
+            background: none;
             margin-left: -15%;
             margin-top: -1%;
           `}
@@ -238,6 +243,7 @@ const PaginadeLista = () => {
           <div
             css={css`
               overflow: scroll;
+              background: none;
               height: 600px;
               width: 1000px;
               display: flex;
